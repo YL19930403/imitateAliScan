@@ -13,6 +13,8 @@
 #import "QRCodeGenerator.h"
 #import "ScanViewController.h"
 #import <Masonry.h>
+#import "YLAlertView.h"
+#import "UIView+YLExtension.h"
 
 @interface ViewController ()<UITextFieldDelegate>{
     NSTimer * _timer ;
@@ -113,12 +115,12 @@
         _timer.fireDate=[NSDate distantPast];
     }
     
-    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.textField endEditing:YES];
+    
 }
 
 
@@ -201,6 +203,8 @@
     
     _timer.fireDate=[NSDate distantPast];
 }
+
+
 
 @end
 

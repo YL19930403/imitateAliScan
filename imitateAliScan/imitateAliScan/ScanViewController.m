@@ -11,6 +11,8 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "MyCodeViewController.h"
+#import "YLAlertView.h"
+#import <POP.h>
 
 static const CGFloat kBoardW = 100 ;
 static const CGFloat kMargin = 30 ;
@@ -22,6 +24,7 @@ static const CGFloat kMargin = 30 ;
 @property(nonatomic,weak) UIView * maskView ;
 @property(nonatomic,strong)UIView * scanWindow ;
 @property(nonatomic,strong)UIImageView * scanNetImageView ;
+
 
 @end
 
@@ -258,9 +261,35 @@ static const CGFloat kMargin = 30 ;
         [_session stopRunning];
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex : 0 ];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"扫描结果" message:metadataObject.stringValue delegate:self cancelButtonTitle:@"退出" otherButtonTitles:@"再次扫描", nil];
-        [alert show];
+        
+
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"扫描结果" message:metadataObject.stringValue delegate:self cancelButtonTitle:@"退出" otherButtonTitles:@"再次扫描", nil];
+//        [alert show];
+      
+        YLAlertView * alert  = [YLAlertView viewFromXib];
+        alert.contentLabel.text  =   metadataObject.stringValue ;
+        [self startKeyAnimation:alert];
+        [UIView animateWithDuration:0.0 animations:^{
+            alert.centerX = 150 ;
+            alert.centerY = -100 ;
+        }];
+      
+        UIWindow * window = [UIApplication sharedApplication].keyWindow;
+        [window addSubview:alert];
+        
     }
+}
+
+- (void) startKeyAnimation:(YLAlertView * )alertView
+{
+    POPSpringAnimation * popAni = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY ] ;
+    ;
+    CGFloat y = self.view.centerY ;
+    popAni.springSpeed = 15 ;
+    popAni.springBounciness = 15 ;
+    popAni.toValue = @(y);
+    popAni.beginTime = CACurrentMediaTime() + 1.1 ;
+    [alertView.layer pop_addAnimation:popAni forKey:nil];
 }
 
 #pragma mark-> 获取扫描区域的比例关系
@@ -377,6 +406,8 @@ static const CGFloat kMargin = 30 ;
         [_session startRunning];
     }
 }
+
+
 
 @end
 
