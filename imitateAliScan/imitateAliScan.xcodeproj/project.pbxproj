@@ -17,6 +17,10 @@
 		299ABDCC1C7D973A004E71E6 /* imitateAliScanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 299ABDCB1C7D973A004E71E6 /* imitateAliScanTests.m */; };
 		299ABDD71C7D973A004E71E6 /* imitateAliScanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 299ABDD61C7D973A004E71E6 /* imitateAliScanUITests.m */; };
 		299ABDE61C7D98D9004E71E6 /* UIView+YLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 299ABDE51C7D98D9004E71E6 /* UIView+YLExtension.m */; };
+		299ABDED1C7D9D90004E71E6 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 299ABDEC1C7D9D90004E71E6 /* QRCodeGenerator.m */; };
+		299ABDF01C7D9DDD004E71E6 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299ABDEF1C7D9DDD004E71E6 /* ScanViewController.m */; };
+		299ABDF41C7DA48D004E71E6 /* MyCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299ABDF21C7DA48D004E71E6 /* MyCodeViewController.m */; };
+		299ABDF51C7DA48D004E71E6 /* MyCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299ABDF31C7DA48D004E71E6 /* MyCodeViewController.xib */; };
 		634272AD10825D4CA887B814 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F09B617EC23D3DD324E4040 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +61,13 @@
 		299ABDD81C7D973A004E71E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		299ABDE41C7D98D9004E71E6 /* UIView+YLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YLExtension.h"; sourceTree = "<group>"; };
 		299ABDE51C7D98D9004E71E6 /* UIView+YLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YLExtension.m"; sourceTree = "<group>"; };
+		299ABDEB1C7D9D90004E71E6 /* QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeGenerator.h; sourceTree = "<group>"; };
+		299ABDEC1C7D9D90004E71E6 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
+		299ABDEE1C7D9DDD004E71E6 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		299ABDEF1C7D9DDD004E71E6 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		299ABDF11C7DA48D004E71E6 /* MyCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCodeViewController.h; sourceTree = "<group>"; };
+		299ABDF21C7DA48D004E71E6 /* MyCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCodeViewController.m; sourceTree = "<group>"; };
+		299ABDF31C7DA48D004E71E6 /* MyCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCodeViewController.xib; sourceTree = "<group>"; };
 		304AB0A409B4E35BC84098A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7F09B617EC23D3DD324E4040 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7BCB1782BB8487FAC928DFA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,8 +137,13 @@
 				299ABDB21C7D973A004E71E6 /* AppDelegate.m */,
 				299ABDB41C7D973A004E71E6 /* ViewController.h */,
 				299ABDB51C7D973A004E71E6 /* ViewController.m */,
+				299ABDEE1C7D9DDD004E71E6 /* ScanViewController.h */,
+				299ABDEF1C7D9DDD004E71E6 /* ScanViewController.m */,
 				299ABDE41C7D98D9004E71E6 /* UIView+YLExtension.h */,
 				299ABDE51C7D98D9004E71E6 /* UIView+YLExtension.m */,
+				299ABDF11C7DA48D004E71E6 /* MyCodeViewController.h */,
+				299ABDF21C7DA48D004E71E6 /* MyCodeViewController.m */,
+				299ABDF31C7DA48D004E71E6 /* MyCodeViewController.xib */,
 				299ABDB71C7D973A004E71E6 /* Main.storyboard */,
 				299ABDBD1C7D973A004E71E6 /* Assets.xcassets */,
 				299ABDBF1C7D973A004E71E6 /* LaunchScreen.storyboard */,
@@ -141,6 +157,8 @@
 		299ABDAE1C7D973A004E71E6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				299ABDEB1C7D9D90004E71E6 /* QRCodeGenerator.h */,
+				299ABDEC1C7D9D90004E71E6 /* QRCodeGenerator.m */,
 				299ABDAF1C7D973A004E71E6 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -279,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				299ABDC11C7D973A004E71E6 /* LaunchScreen.storyboard in Resources */,
+				299ABDF51C7DA48D004E71E6 /* MyCodeViewController.xib in Resources */,
 				299ABDBE1C7D973A004E71E6 /* Assets.xcassets in Resources */,
 				299ABDB91C7D973A004E71E6 /* Main.storyboard in Resources */,
 			);
@@ -354,10 +373,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				299ABDB61C7D973A004E71E6 /* ViewController.m in Sources */,
+				299ABDF41C7DA48D004E71E6 /* MyCodeViewController.m in Sources */,
 				299ABDB31C7D973A004E71E6 /* AppDelegate.m in Sources */,
 				299ABDE61C7D98D9004E71E6 /* UIView+YLExtension.m in Sources */,
 				299ABDB01C7D973A004E71E6 /* main.m in Sources */,
+				299ABDF01C7D9DDD004E71E6 /* ScanViewController.m in Sources */,
 				299ABDBC1C7D973A004E71E6 /* imitateAliScan.xcdatamodeld in Sources */,
+				299ABDED1C7D9D90004E71E6 /* QRCodeGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +521,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = imitateAliScan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Masonry\"",
+					"-l\"libqrencode\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.520it.imitateAliScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -511,6 +543,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = imitateAliScan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Masonry\"",
+					"-l\"libqrencode\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.520it.imitateAliScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
