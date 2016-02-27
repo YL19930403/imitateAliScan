@@ -8,6 +8,8 @@
 
 #import "YLAlertView.h"
 
+
+
 @interface YLAlertView ()
 
 
@@ -57,16 +59,35 @@
 - (IBAction)exit:(UIButton *)sender {
 
     [self removeFromSuperview];
+    if ([_delegate respondsToSelector:@selector(YLAlertViewBackClick)]) {
+        [_delegate YLAlertViewBackClick];
+    }
    
 }
 
 - (IBAction)AgainScanning:(UIButton *)sender {
+    [self removeFromSuperview];
+    if ([_delegate respondsToSelector:@selector(YLAlertGoOnClick)]) {
+        [_delegate YLAlertGoOnClick];
+    }
     
 }
 
 - (IBAction)open:(UIButton *)sender {
+    NSString * urlAddress = self.contentLabel.text ;
+    NSURL * url = [NSURL URLWithString:urlAddress];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url];
+    }else{
+        NSLog(@"发送未知错误");
+    }
+    [self removeFromSuperview];
+    if ([_delegate respondsToSelector:@selector(YLAlertGoOnClick)]) {
+        [_delegate YLAlertGoOnClick];
+    }
+    
+    
 }
-
 @end
 
 

@@ -17,15 +17,15 @@
 static const CGFloat kBoardW = 100 ;
 static const CGFloat kMargin = 30 ;
 
-@interface ScanViewController ()<UIAlertViewDelegate,AVCaptureMetadataOutputObjectsDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface ScanViewController ()<UIAlertViewDelegate,AVCaptureMetadataOutputObjectsDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,YLAlertViewWithDelegate>
 
 
 @property(nonatomic,strong)AVCaptureSession * session ;
 @property(nonatomic,weak) UIView * maskView ;
 @property(nonatomic,strong)UIView * scanWindow ;
 @property(nonatomic,strong)UIImageView * scanNetImageView ;
-
-
+@property(nonatomic,strong)YLAlertView * alertView ;
+@property(nonatomic,strong)AVCaptureVideoPreviewLayer * captureLayer ;
 @end
 
 @implementation ScanViewController
@@ -61,6 +61,7 @@ static const CGFloat kMargin = 30 ;
 - (void)viewWillDisappear:(BOOL)animated
 {
     self.navigationController.navigationBar.hidden = NO;
+    [self.alertView removeFromSuperview];
 }
 
 - (void) setupMaskView
@@ -93,6 +94,7 @@ static const CGFloat kMargin = 30 ;
     [myCodeBtn setImage:[UIImage imageNamed:@"qrcode_scan_btn_myqrcode_down"] forState:UIControlStateNormal];
     myCodeBtn.contentMode = UIViewContentModeScaleAspectFit ;
     [myCodeBtn addTarget:self action:@selector(myCodeClick) forControlEvents:UIControlEventTouchUpInside];
+    [bottomBar addSubview:myCodeBtn];
     
 }
 
@@ -144,13 +146,11 @@ static const CGFloat kMargin = 30 ;
     flashBtn.contentMode=UIViewContentModeScaleAspectFit;
     [flashBtn addTarget:self action:@selector(openFlash:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:flashBtn];
-
-    
-    
 }
 
 - (void) disMiss
 {
+    [self.alertView removeFromSuperview];
    [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -247,6 +247,7 @@ static const CGFloat kMargin = 30 ;
     output.metadataObjectTypes=@[AVMetadataObjectTypeQRCode,AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];
     
     AVCaptureVideoPreviewLayer * layer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
+    self.captureLayer = layer ;
     layer.videoGravity=AVLayerVideoGravityResizeAspectFill;
     layer.frame=self.view.layer.bounds;
     [self.view.layer insertSublayer:layer atIndex:0];
@@ -260,13 +261,10 @@ static const CGFloat kMargin = 30 ;
     if (metadataObjects.count>0) {
         [_session stopRunning];
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex : 0 ];
-        
-        
-
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"扫描结果" message:metadataObject.stringValue delegate:self cancelButtonTitle:@"退出" otherButtonTitles:@"再次扫描", nil];
-//        [alert show];
       
         YLAlertView * alert  = [YLAlertView viewFromXib];
+        alert.delegate = self ;
+        self.alertView = alert ;
         alert.contentLabel.text  =   metadataObject.stringValue ;
         [self startKeyAnimation:alert];
         [UIView animateWithDuration:0.0 animations:^{
@@ -407,8 +405,17 @@ static const CGFloat kMargin = 30 ;
     }
 }
 
+#pragma mark - YLAlertViewWithDelegate
+- (void) YLAlertViewBackClick
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
-
+- (void) YLAlertGoOnClick
+{
+    [self.captureLayer removeFromSuperlayer];
+    [self beginScanning];
+}
 @end
 
 
